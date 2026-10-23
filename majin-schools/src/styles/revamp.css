@@ -287,12 +287,14 @@ body { color: var(--ink); background: var(--ivory); font-size: 16px; }
 .campus-intro-aside { border-left: 2px solid var(--green); background: #f0e8da; padding: 20px 22px; }
 .campus-intro-aside p { color: #59656e; font-size: 14px; line-height: 1.8; }
 .campus-aside-icon { color: var(--green); }
-.campus-gallery-grid { gap: 14px; }
-.campus-gallery-item button { border-radius: 3px; }
-.gallery-item-shade { background: linear-gradient(0deg, rgba(18,29,42,.78), rgba(18,29,42,0) 58%); }
-.gallery-item-copy small { font-size: 10px; letter-spacing: .1em; }
-.gallery-item-copy strong { font-size: 24px; }
-.gallery-item-open { background: var(--green); border-radius: 2px; }
+.campus-filter-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.campus-filter-label { font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--navy); }
+.campus-gallery-grid { gap: 16px; }
+.campus-gallery-item button { border-radius: 4px; }
+.gallery-item-shade { background: linear-gradient(0deg, rgba(18,29,42,.84), rgba(18,29,42,0) 58%); }
+.gallery-item-copy small { font-size: 10px; letter-spacing: .12em; color: #eed5a1; }
+.gallery-item-copy strong { font-size: clamp(20px, 1.8vw, 26px); font-family: var(--serif); font-weight: 400; line-height: 1.15; }
+.gallery-item-open { background: var(--green); border-radius: 50%; }
 .campus-visit-strip { padding: 38px clamp(20px, 7.2vw, 104px); background: var(--green-dark); }
 .campus-visit-strip h2 { font-size: clamp(35px, 4vw, 53px); }
 .admissions-layout, .admissions-section { background: var(--ivory); }

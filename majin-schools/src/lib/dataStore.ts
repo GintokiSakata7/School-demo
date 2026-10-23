@@ -2,7 +2,7 @@ import { seedData } from '../data/seedData';
 import type { AdmissionInquiry, SiteData } from '../data/types';
 import { supabase, supabaseEnabled } from './supabase';
 
-const SITE_STORAGE_KEY = 'majin-schools-site-data-v1';
+const SITE_STORAGE_KEY = 'majin-schools-site-data-v2';
 const INQUIRIES_STORAGE_KEY = 'majin-schools-inquiries-v1';
 
 function readLocalData(): SiteData {

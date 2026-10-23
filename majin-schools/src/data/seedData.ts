@@ -18,6 +18,11 @@ export const imageBank = {
   faculty2: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85',
   faculty3: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85',
   students2: 'https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1400&q=85',
+  playground: 'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=1400&q=85',
+  computerLab: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1400&q=85',
+  interactiveSession: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=85',
+  robotics: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=85',
+  kidsPlay: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=1400&q=85',
 };
 
 export const seedData: SiteData = {
@@ -48,12 +53,19 @@ export const seedData: SiteData = {
     { id: 'event-3', title: 'Champions in the Making', category: 'Sports', date: '2027-01-18', description: 'An energetic day of teamwork, movement, healthy competition, and personal bests.', image: imageBank.sports },
   ],
   gallery: [
-    { id: 'gallery-1', title: 'Learning by doing', category: 'Academics', image: imageBank.classroom },
-    { id: 'gallery-2', title: 'Ideas in the making', category: 'Innovation', image: imageBank.science },
-    { id: 'gallery-3', title: 'A place to explore', category: 'Campus', image: imageBank.library },
-    { id: 'gallery-4', title: 'Move with purpose', category: 'Sports', image: imageBank.sports },
-    { id: 'gallery-5', title: 'Create without limits', category: 'Arts', image: imageBank.art },
-    { id: 'gallery-6', title: 'Together we grow', category: 'Community', image: imageBank.students2 },
+    { id: 'gallery-1', title: 'Hands-on Science & Innovation', category: 'Innovation & Labs', image: imageBank.science },
+    { id: 'gallery-2', title: 'Modern Computer & Coding Lab', category: 'Computer Labs', image: imageBank.computerLab },
+    { id: 'gallery-3', title: 'Adventure Playground & Active Turf', category: 'Playground & Sports', image: imageBank.playground },
+    { id: 'gallery-4', title: 'Interactive Seminar & Group Sessions', category: 'Interactive Sessions', image: imageBank.interactiveSession },
+    { id: 'gallery-5', title: 'Robotics & STEM Maker Workshop', category: 'Innovation & Labs', image: imageBank.robotics },
+    { id: 'gallery-6', title: 'Knowledge Commons & Reading Loft', category: 'Library & Focus', image: imageBank.library },
+    { id: 'gallery-7', title: 'Athletics Track & Field Sports', category: 'Playground & Sports', image: imageBank.sports },
+    { id: 'gallery-8', title: 'Fine Arts Studio & Craft Atelier', category: 'Creative Arts', image: imageBank.art },
+    { id: 'gallery-9', title: 'Interactive Collaborative Classrooms', category: 'Interactive Sessions', image: imageBank.classroom },
+    { id: 'gallery-10', title: 'Early Years Outdoor Play Court', category: 'Playground & Sports', image: imageBank.kidsPlay },
+    { id: 'gallery-11', title: 'Performing Arts Theatre & Auditorium', category: 'Creative Arts', image: imageBank.auditorium },
+    { id: 'gallery-12', title: 'Campus Courtyard & Assembly Commons', category: 'Campus Spaces', image: imageBank.campus },
   ],
   inquiries: [],
 };
+
