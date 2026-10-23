@@ -110,7 +110,83 @@ function formatDate(date: string) {
 }
 
 export function AboutPage() {
-  return <><PageHero eyebrow="Our story" title={<>A school for the<br /><em>whole person.</em></>} description="We are building a learning community where ambition is balanced with empathy, achievement with wellbeing, and knowledge with imagination." image={imageBank.students2} /><StatBand /><section className="section-pad story-block"><div className="story-side-label">01 / WHAT WE BELIEVE</div><div className="story-main"><SectionHeading eyebrow="Our north star" title={<>Every child has more<br />possibility than we can see.</>} /><div className="story-columns"><p>Education should give students the confidence to find their own answers, the courage to explore unfamiliar ideas, and the tools to make a positive difference in the world around them.</p><p>That belief shapes how we think about classrooms, relationships, challenge, and care. We aim to build a culture where curiosity is welcomed, effort is valued, and every learner can make meaningful progress.</p></div><div className="values-row">{['Curiosity', 'Integrity', 'Belonging', 'Courage'].map((value, i) => <span key={value}><small>0{i + 1}</small>{value}</span>)}</div></div></section><section className="about-image-band"><ImageReveal src={imageBank.classroom} alt="A teacher supporting students during a lesson" /><div className="about-image-caption"><span>More than a lesson.</span><strong>A lasting way to see the world.</strong></div></section><section className="section-pad mission-grid-section"><SectionHeading eyebrow="What guides us" title={<>Purpose in every<br /><em>possibility.</em></>} description="The values we choose shape the experiences we create." /><div className="mission-grid">{[{ n: '01', title: 'Our vision', text: 'To nurture thoughtful, capable, compassionate young people who are ready to contribute to a changing world.' }, { n: '02', title: 'Our mission', text: 'To create a rigorous, welcoming learning environment where every student is known, challenged, and encouraged to grow.' }, { n: '03', title: 'Our promise', text: 'To make space for every learner to ask questions, try with courage, and discover what they can become.' }].map((v) => <div className="mission-card" key={v.n}><span>{v.n}</span><h3>{v.title}</h3><p>{v.text}</p></div>)}</div></section><GrandCTA /></>;
+  return (
+    <>
+      <PageHero
+        eyebrow="Our story"
+        title={<>A school for the<br /><em>whole person.</em></>}
+        description="We are building a learning community where ambition is balanced with empathy, achievement with wellbeing, and knowledge with imagination."
+        image={imageBank.students2}
+      />
+      <StatBand />
+      <section className="section-pad story-block">
+        <div className="story-side">
+          <div className="story-side-label">01 / WHAT WE BELIEVE</div>
+          <div className="story-side-card">
+            <div className="story-side-photo">
+              <img src={imageBank.teacher} alt="Mentorship and care at Majin Schools" loading="lazy" />
+              <span className="story-side-tag"><Sparkles size={12} /> Inquiry & Mentorship</span>
+            </div>
+            <div className="story-side-content">
+              <blockquote className="story-side-quote">
+                “Curiosity is not a phase to outgrow — it is the engine of capability.”
+              </blockquote>
+              <span className="story-side-author">— Majin Educational Charter</span>
+              <div className="story-side-stats">
+                <div className="story-side-stat">
+                  <strong>1 : 12</strong>
+                  <span>Mentor ratio</span>
+                </div>
+                <div className="story-side-stat">
+                  <strong>100%</strong>
+                  <span>Inquiry-led</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="story-main">
+          <SectionHeading eyebrow="Our north star" title={<>Every child has more<br />possibility than we can see.</>} />
+          <div className="story-columns">
+            <p>Education should give students the confidence to find their own answers, the courage to explore unfamiliar ideas, and the tools to make a positive difference in the world around them.</p>
+            <p>That belief shapes how we think about classrooms, relationships, challenge, and care. We aim to build a culture where curiosity is welcomed, effort is valued, and every learner can make meaningful progress.</p>
+          </div>
+          <div className="values-row">
+            {['Curiosity', 'Integrity', 'Belonging', 'Courage'].map((value, i) => (
+              <span key={value}>
+                <small>0{i + 1}</small>
+                {value}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="about-image-band">
+        <ImageReveal src={imageBank.classroom} alt="A teacher supporting students during a lesson" />
+        <div className="about-image-caption">
+          <span>More than a lesson.</span>
+          <strong>A lasting way to see the world.</strong>
+        </div>
+      </section>
+      <section className="section-pad mission-grid-section">
+        <SectionHeading eyebrow="What guides us" title={<>Purpose in every<br /><em>possibility.</em></>} description="The values we choose shape the experiences we create." />
+        <div className="mission-grid">
+          {[
+            { n: '01', title: 'Our vision', text: 'To nurture thoughtful, capable, compassionate young people who are ready to contribute to a changing world.' },
+            { n: '02', title: 'Our mission', text: 'To create a rigorous, welcoming learning environment where every student is known, challenged, and encouraged to grow.' },
+            { n: '03', title: 'Our promise', text: 'To make space for every learner to ask questions, try with courage, and discover what they can become.' }
+          ].map((v) => (
+            <div className="mission-card" key={v.n}>
+              <span>{v.n}</span>
+              <h3>{v.title}</h3>
+              <p>{v.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <GrandCTA />
+    </>
+  );
 }
 
 export function AcademicsPage() {

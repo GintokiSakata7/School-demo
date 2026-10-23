@@ -243,8 +243,21 @@ body { color: var(--ink); background: var(--ivory); font-size: 16px; }
 .belief-item h3 { color: #fff; font-size: 15px; }
 .belief-item p { color: rgba(255,255,255,.66); font-size: 12px; }
 .belief-arrow { color: #eebf72; }
-.story-block { grid-template-columns: minmax(135px, .28fr) minmax(0, 1fr); gap: 36px; }
-.story-side-label { font-size: 10px; color: var(--green-dark); }
+.story-block { display: grid; grid-template-columns: minmax(280px, .32fr) minmax(0, 1fr); gap: clamp(36px, 5vw, 64px); align-items: start; }
+.story-side { display: flex; flex-direction: column; gap: 20px; }
+.story-side-label { border-top: 1px solid var(--gold); padding-top: 14px; color: var(--green-dark); font-size: 10px; letter-spacing: .15em; font-weight: 800; }
+.story-side-card { background: #f0ece2; border-radius: 4px; overflow: hidden; border: 1px solid rgba(28, 41, 55, 0.08); box-shadow: 0 4px 16px rgba(17, 29, 43, 0.04); transition: transform .3s ease, box-shadow .3s ease; }
+.story-side-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(17, 29, 43, 0.08); }
+.story-side-photo { position: relative; height: 200px; overflow: hidden; }
+.story-side-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.story-side-card:hover .story-side-photo img { transform: scale(1.04); }
+.story-side-tag { position: absolute; bottom: 12px; left: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: rgba(17, 29, 43, 0.88); backdrop-filter: blur(8px); color: #f0c982; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-radius: 3px; }
+.story-side-content { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 13px; }
+.story-side-quote { margin: 0; font-family: var(--serif); font-size: 15px; line-height: 1.48; color: var(--navy); font-style: italic; }
+.story-side-author { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--green-dark); font-weight: 700; }
+.story-side-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 14px; border-top: 1px solid rgba(28, 41, 55, 0.1); margin-top: 2px; }
+.story-side-stat strong { display: block; font-family: var(--serif); font-size: 20px; color: var(--navy); line-height: 1.1; font-weight: 600; }
+.story-side-stat span { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: .06em; color: #63707c; margin-top: 4px; line-height: 1.3; }
 .story-columns p { color: #58646e; font-size: 15px; line-height: 1.85; }
 .values-row { margin-top: 35px; border-top-color: var(--line); }
 .values-row span { padding: 20px 12px 0 0; font-size: 14px; }
@@ -462,7 +475,8 @@ body { color: var(--ink); background: var(--ivory); font-size: 16px; }
   .belief-item h3 { font-size: 14px; }
   .belief-item p { font-size: 11px; }
   .story-block { display: block; }
-  .story-side-label { margin-bottom: 24px; }
+  .story-side { margin-bottom: 34px; }
+  .story-side-card { max-width: 440px; }
   .story-columns { grid-template-columns: 1fr; gap: 14px; }
   .story-columns p { font-size: 14px; }
   .values-row { grid-template-columns: 1fr 1fr; gap: 0; }
