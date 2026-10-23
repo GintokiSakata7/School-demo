@@ -596,13 +596,23 @@ body { color: var(--ink); background: var(--ivory); font-size: 16px; }
 .hero-trust-points { display: none; }
 
 /* Inner pages use an editorial split, not the same dark banner repeated ten times. */
-.page-hero-editorial {
+.page-hero-editorial,
+.page-hero.page-hero-editorial,
+.page-hero.page-hero-editorial:not([style]) {
   min-height: 0;
   padding: clamp(36px, 4.3vw, 64px) clamp(22px, 6.4vw, 92px) clamp(44px, 5.7vw, 82px);
-  background: var(--ivory);
-  color: var(--ink);
+  background: var(--ivory) !important;
+  background-color: var(--ivory) !important;
+  background-image: none !important;
+  color: var(--ink) !important;
   position: relative;
   isolation: isolate;
+}
+.page-hero.page-hero-editorial::before,
+.page-hero-editorial::before,
+.page-hero-editorial .page-hero-grain,
+.page-hero.page-hero-editorial .page-hero-grain {
+  display: none !important;
 }
 .page-hero-editorial::after {
   content: '';
@@ -614,7 +624,6 @@ body { color: var(--ink); background: var(--ivory); font-size: 16px; }
   height: 1px;
   background: var(--line);
 }
-.page-hero-editorial .page-hero-grain { display: none; }
 .page-hero-editorial .page-hero-inner {
   width: 100%;
   max-width: 1360px;
@@ -657,18 +666,30 @@ body { color: var(--ink); background: var(--ivory); font-size: 16px; }
   font-weight: 700;
 }
 .page-hero-editorial .eyebrow { color: var(--green-dark); }
-.page-hero-editorial h1 {
+.page-hero-editorial h1,
+.page-hero.page-hero-editorial h1 {
   max-width: 700px;
-  color: var(--navy);
+  color: var(--navy) !important;
   font-family: var(--serif);
   font-weight: 400;
   font-size: clamp(44px, 4.7vw, 69px);
   line-height: .99;
   letter-spacing: -.045em;
-  margin: 23px 0 22px;
+  margin: 18px 0 20px;
 }
-.page-hero-editorial h1 em { color: var(--green); font-style: normal; }
-.page-hero-editorial p { max-width: 530px; margin: 0; color: #5d6871; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.82; }
+.page-hero-editorial h1 em,
+.page-hero.page-hero-editorial h1 em {
+  color: #c04e33 !important;
+  font-style: normal;
+}
+.page-hero-editorial p,
+.page-hero.page-hero-editorial p {
+  max-width: 530px;
+  margin: 0;
+  color: #4b5863 !important;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.82;
+}
 .page-hero-editorial .page-hero-meta {
   width: 100%;
   max-width: none;

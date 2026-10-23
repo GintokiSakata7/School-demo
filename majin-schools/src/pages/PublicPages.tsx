@@ -25,7 +25,6 @@ function PageHero({ eyebrow, title, description, image, label }: { eyebrow: stri
           <ChevronRight size={11} className="breadcrumb-arrow" />
           <span className="breadcrumb-current" aria-current="page">{eyebrow}</span>
         </nav>
-        <span className="eyebrow"><i />{eyebrow}</span>
         <h1>{title}</h1>
         <p>{description}</p>
         <div className="page-hero-meta"><span>{label || eyebrow}</span><span><i />Explore the page <ArrowDown size={14} /></span></div>
@@ -38,6 +37,7 @@ function PageHero({ eyebrow, title, description, image, label }: { eyebrow: stri
     </div>
   </section>;
 }
+
 
 
 function StatBand() {

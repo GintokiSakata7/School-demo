@@ -295,8 +295,8 @@ img { display: block; max-width: 100%; }
 .mobile-admissions-pill { display: none; }
 
 /* Inner page visual language */
-.page-hero { min-height: 470px; position: relative; display: flex; align-items: center; isolation: isolate; background-color: var(--navy); background-size: cover; background-position: center 43%; color: #fff; }
-.page-hero:not([style]) { background-image: radial-gradient(circle at 75% 50%, rgba(53,104,89,.4), transparent 36%), linear-gradient(120deg, var(--navy), #284b5d); }
+.page-hero:not(.page-hero-editorial) { min-height: 470px; position: relative; display: flex; align-items: center; isolation: isolate; background-color: var(--navy); background-size: cover; background-position: center 43%; color: #fff; }
+.page-hero:not(.page-hero-editorial):not([style]) { background-image: radial-gradient(circle at 75% 50%, rgba(53,104,89,.4), transparent 36%), linear-gradient(120deg, var(--navy), #284b5d); }
 .page-hero-grain { position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, rgba(14,31,47,.33), transparent 55%); pointer-events: none; }
 .page-hero-inner { width: 100%; max-width: 1390px; padding: 70px 10.5% 58px; margin: auto; }
 .page-hero h1 { font-size: clamp(48px, 5.5vw, 77px); margin: 21px 0 17px; }
