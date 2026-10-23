@@ -47,6 +47,28 @@ export type AdmissionInquiry = {
   status: 'New' | 'Contacted' | 'Visit scheduled' | 'Closed';
 };
 
+export type MeritStudent = {
+  id: string;
+  name: string;
+  rankOrScore: string;
+  examOrCategory: string;
+  year: string;
+  sectionOrStream: string;
+  image: string;
+  highlights: string;
+  badge?: string;
+};
+
+export type BoardResultStat = {
+  id: string;
+  year: string;
+  exam: string;
+  passPercentage: string;
+  distinctionPercentage: string;
+  schoolAverage: string;
+  centumCount: string;
+};
+
 export type SiteSettings = {
   schoolName: string;
   tagline: string;
@@ -65,4 +87,7 @@ export type SiteData = {
   events: SchoolEvent[];
   gallery: GalleryItem[];
   inquiries: AdmissionInquiry[];
+  meritStudents: MeritStudent[];
+  boardResults: BoardResultStat[];
 };
+

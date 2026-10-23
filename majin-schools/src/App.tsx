@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { SiteDataProvider } from './context/SiteDataContext';
 import { SiteLayout } from './components/SiteLayout';
-import { HomePage, AboutPage, AcademicsPage, FacultyPage, AchievementsPage, StudentLifePage, CampusPage, NewsPage, AdmissionsPage, ContactPage } from './pages/PublicPages';
+import { HomePage, AboutPage, AcademicsPage, FacultyPage, AchievementsPage, StudentLifePage, CampusPage, NewsPage, AdmissionsPage, ContactPage, ToppersPage } from './pages/PublicPages';
 import { AdminPage } from './pages/AdminPage';
 
 function NotFound() {
@@ -13,6 +13,7 @@ export default function App() {
     <Route path="/admin" element={<AdminPage />} />
     <Route element={<SiteLayout />}>
       <Route index element={<HomePage />} />
+      <Route path="toppers" element={<ToppersPage />} />
       <Route path="about" element={<AboutPage />} />
       <Route path="academics" element={<AcademicsPage />} />
       <Route path="faculty" element={<FacultyPage />} />

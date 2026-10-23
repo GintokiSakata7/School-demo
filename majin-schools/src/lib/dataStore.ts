@@ -2,7 +2,7 @@ import { seedData } from '../data/seedData';
 import type { AdmissionInquiry, SiteData } from '../data/types';
 import { supabase, supabaseEnabled } from './supabase';
 
-const SITE_STORAGE_KEY = 'majin-schools-site-data-v2';
+const SITE_STORAGE_KEY = 'majin-schools-site-data-v3';
 const INQUIRIES_STORAGE_KEY = 'majin-schools-inquiries-v1';
 
 function readLocalData(): SiteData {
@@ -10,7 +10,13 @@ function readLocalData(): SiteData {
     const saved = localStorage.getItem(SITE_STORAGE_KEY);
     if (saved) {
       const parsed = JSON.parse(saved) as SiteData;
-      return { ...structuredClone(seedData), ...parsed, settings: { ...seedData.settings, ...parsed.settings } };
+      return {
+        ...structuredClone(seedData),
+        ...parsed,
+        settings: { ...seedData.settings, ...parsed.settings },
+        meritStudents: parsed.meritStudents && parsed.meritStudents.length > 0 ? parsed.meritStudents : structuredClone(seedData.meritStudents),
+        boardResults: parsed.boardResults && parsed.boardResults.length > 0 ? parsed.boardResults : structuredClone(seedData.boardResults),
+      };
     }
   } catch (error) {
     console.warn('Could not read local school content; using starter data.', error);

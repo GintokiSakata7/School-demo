@@ -23,6 +23,18 @@ export const imageBank = {
   interactiveSession: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=85',
   robotics: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=85',
   kidsPlay: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=1400&q=85',
+  topper1: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80',
+  topper2: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+  topper3: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+  topper4: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
+  topper5: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80',
+  topper6: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
+  topper7: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+  topper8: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+  topper9: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
+  topper10: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=800&q=80',
+  topper11: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80',
+  topper12: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
 };
 
 export const seedData: SiteData = {
@@ -67,5 +79,24 @@ export const seedData: SiteData = {
     { id: 'gallery-12', title: 'Campus Courtyard & Assembly Commons', category: 'Campus Spaces', image: imageBank.campus },
   ],
   inquiries: [],
+  meritStudents: [
+    { id: 'merit-1', name: 'Rohan Kulkarni', rankOrScore: '99.6% · AIR 4', examOrCategory: 'Grade XII Science (MPC)', year: '2026', sectionOrStream: 'Section A (MPC)', image: imageBank.topper1, badge: 'CBSE NATIONAL TOPPER', highlights: '100 Math · 100 Physics · 99 Chemistry | JEE Advanced Qualifier' },
+    { id: 'merit-2', name: 'Sanjana Reddy', rankOrScore: '99.2% · State 1st', examOrCategory: 'Grade XII Science (BiPC)', year: '2026', sectionOrStream: 'Section B (BiPC)', image: imageBank.topper2, badge: 'STATE MEDICAL TOPPER', highlights: '100 Biology · 100 Chemistry | NEET All India Top 50' },
+    { id: 'merit-3', name: 'Aditya Nair', rankOrScore: '99.0% · Commerce Topper', examOrCategory: 'Grade XII Commerce', year: '2026', sectionOrStream: 'Section C (Commerce)', image: imageBank.topper3, badge: 'COMMERCE GOLD MEDAL', highlights: '100 Accountancy · 100 Economics | CA Foundation Merit' },
+    { id: 'merit-4', name: 'Meera Iyer', rankOrScore: '99.4% · 10 GPA', examOrCategory: 'Grade X CBSE Board', year: '2026', sectionOrStream: 'Section Lotus', image: imageBank.topper4, badge: 'SCHOOL TOPPER (GRADE X)', highlights: 'Centum (100) in Mathematics & Science | NTSE National Scholar' },
+    { id: 'merit-5', name: 'Kavya Sundaram', rankOrScore: '98.8% · 10 GPA', examOrCategory: 'Grade X CBSE Board', year: '2026', sectionOrStream: 'Section Jasmine', image: imageBank.topper5, badge: 'BOARD DISTINCTION', highlights: '100 Social Science · 99 English | National Debate Finalist' },
+    { id: 'merit-6', name: 'Tarun Varma', rankOrScore: '99.2% · AIR 9', examOrCategory: 'Grade XII Science (MPC)', year: '2025', sectionOrStream: 'Section A (MPC)', image: imageBank.topper6, badge: '2025 MPC TOPPER', highlights: '100 Mathematics · 99 Computer Science | Now at IIT Madras' },
+    { id: 'merit-7', name: 'Ananya Sen', rankOrScore: '98.8% · City Rank 1', examOrCategory: 'Grade XII Science (BiPC)', year: '2025', sectionOrStream: 'Section B (BiPC)', image: imageBank.topper7, badge: '2025 BIPC TOPPER', highlights: '100 Biology · 98 Physics | KVPY National Fellow' },
+    { id: 'merit-8', name: 'Varun Teja', rankOrScore: '99.0% · 10 GPA', examOrCategory: 'Grade X CBSE Board', year: '2025', sectionOrStream: 'Section Lotus', image: imageBank.topper8, badge: '2025 GRADE X TOPPER', highlights: 'Centum in Science & Math | National Science Congress' },
+    { id: 'merit-9', name: 'Pooja Hegde', rankOrScore: '98.6% · State Rank 3', examOrCategory: 'Grade XII Commerce', year: '2025', sectionOrStream: 'Section C (Commerce)', image: imageBank.topper9, badge: '2025 COMMERCE MERIT', highlights: '99 Economics · 99 Business Studies | Now at SRCC Delhi' },
+    { id: 'merit-10', name: 'Nikhil Rao', rankOrScore: '99.4% · AIR 14', examOrCategory: 'Grade XII Science (MPC)', year: '2024', sectionOrStream: 'Section A (MPC)', image: imageBank.topper10, badge: '2024 HALL OF FAME', highlights: '100 Math · 100 Chemistry | Int. Physics Olympiad Silver' },
+    { id: 'merit-11', name: 'Shreya Madhavan', rankOrScore: '98.6% · 10 GPA', examOrCategory: 'Grade X CBSE Board', year: '2024', sectionOrStream: 'Section Lotus', image: imageBank.topper11, badge: '2024 GRADE X MERIT', highlights: 'Centum in Math & English | Kishore Vaigyanik Award' },
+    { id: 'merit-12', name: 'Devika Nambiar', rankOrScore: '98.4% · State Rank 2', examOrCategory: 'Grade XII Science (BiPC)', year: '2024', sectionOrStream: 'Section B (BiPC)', image: imageBank.topper12, badge: '2024 MEDICAL MERIT', highlights: '100 Biology · 98 Chemistry | AIIMS New Delhi Scholar' },
+  ],
+  boardResults: [
+    { id: 'br-2026', year: '2026', exam: 'Grade X & XII CBSE Board', passPercentage: '100%', distinctionPercentage: '89.5%', schoolAverage: '92.4%', centumCount: '48 Centums' },
+    { id: 'br-2025', year: '2025', exam: 'Grade X & XII CBSE Board', passPercentage: '100%', distinctionPercentage: '87.2%', schoolAverage: '91.8%', centumCount: '41 Centums' },
+    { id: 'br-2024', year: '2024', exam: 'Grade X & XII CBSE Board', passPercentage: '100%', distinctionPercentage: '85.6%', schoolAverage: '90.7%', centumCount: '36 Centums' },
+  ],
 };
 

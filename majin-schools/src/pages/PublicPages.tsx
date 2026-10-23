@@ -1,6 +1,6 @@
 import { useMemo, useState, type FormEvent, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, Brain, Check, ChevronRight, Compass, FlaskConical, HeartHandshake, Home, Lightbulb, MapPin, MoveUpRight, Mail, Phone, Sparkles, Star, Telescope, Users, X } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, Award, BookOpen, Brain, Calendar, Check, CheckCircle2, ChevronRight, Compass, FlaskConical, HeartHandshake, Home, Lightbulb, MapPin, MoveUpRight, Mail, Phone, Search, Sparkles, Star, Telescope, Trophy, Users, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { imageBank } from '../data/seedData';
 import type { AdmissionInquiry, GalleryItem } from '../data/types';
@@ -49,6 +49,86 @@ function GrandCTA() {
   return <section className="grand-cta"><div className="grand-cta-inner"><Reveal><span className="eyebrow eyebrow-light"><i />Your next chapter</span><h2>Big futures<br /><em>begin somewhere.</em></h2><p>Come see what learning can feel like when curiosity leads the way.</p><div className="cta-actions"><Link className="button button-cream" to="/admissions">Explore admissions <ArrowUpRight size={17} /></Link><Link className="button button-glass" to="/contact">Plan a campus visit <ArrowUpRight size={17} /></Link></div></Reveal></div><div className="grand-cta-bottom"><span>MAJIN SCHOOLS · {new Date().getFullYear()}</span><span>Curiosity becomes capability.</span></div></section>;
 }
 
+export function ToppersPosterBanner() {
+  const { data } = useSiteData();
+  const currentBatchToppers = (data.meritStudents || []).filter((s) => s.year === '2026').slice(0, 4);
+
+  return (
+    <section className="toppers-poster-section section-pad" id="toppers-banner">
+      <div className="toppers-poster-container">
+        <div className="toppers-poster-header">
+          <div className="toppers-poster-badge">
+            <Award size={15} />
+            <span>ACADEMIC MERIT & BOARD EXCELLENCE · 100% PASS RATE</span>
+          </div>
+          <h2 className="toppers-poster-title">
+            Hall of Fame: <em>Top Students.</em>
+          </h2>
+          <p className="toppers-poster-sub">
+            Celebrating our board examination toppers, national rank holders, and subject centum achievers who turn curiosity into disciplined mastery.
+          </p>
+        </div>
+
+        <div className="toppers-metrics-strip">
+          <div className="toppers-metric-item">
+            <span className="metric-number">100%</span>
+            <span className="metric-title">Board Pass Rate</span>
+            <small className="metric-sub">CBSE Grade X & XII (12 consecutive yrs)</small>
+          </div>
+          <div className="toppers-metric-item">
+            <span className="metric-number">99.6%</span>
+            <span className="metric-title">Highest Score</span>
+            <small className="metric-sub">All-India Rank 4 · Science MPC</small>
+          </div>
+          <div className="toppers-metric-item">
+            <span className="metric-number">48+</span>
+            <span className="metric-title">Subject Centums</span>
+            <small className="metric-sub">100/100 in Math, Sci, Eco, CS</small>
+          </div>
+          <div className="toppers-metric-item">
+            <span className="metric-number">89.5%</span>
+            <span className="metric-title">Distinction Rate</span>
+            <small className="metric-sub">Scored 85%+ across cohorts</small>
+          </div>
+        </div>
+
+        <div className="toppers-poster-grid">
+          {currentBatchToppers.map((student) => (
+            <div key={student.id} className="topper-poster-card">
+              <div className="topper-card-media">
+                <img src={student.image} alt={student.name} loading="lazy" />
+                <span className="topper-card-badge">{student.badge || 'TOP ACHIEVER'}</span>
+                <span className="topper-card-score">{student.rankOrScore}</span>
+              </div>
+              <div className="topper-card-body">
+                <div className="topper-stream-tag">{student.examOrCategory}</div>
+                <h3 className="topper-name">{student.name}</h3>
+                <div className="topper-section-tag">{student.sectionOrStream} · Batch {student.year}</div>
+                <p className="topper-highlights">{student.highlights}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="toppers-poster-footer">
+          <div className="toppers-footer-note">
+            <CheckCircle2 size={16} />
+            <span>Comprehensive past year merit lists, section analysis & subject-wise ranks are published for transparent review.</span>
+          </div>
+          <div className="toppers-footer-actions">
+            <Link to="/toppers" className="button button-cream">
+              View full merit list & past years <ArrowUpRight size={16} />
+            </Link>
+            <Link to="/admissions" className="button button-glass">
+              Admissions open for {data.settings.academicYear} <ArrowUpRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function HomePage() {
   const { data } = useSiteData();
   const featuredFaculty = data.faculty.slice(0, 3);
@@ -91,6 +171,8 @@ export function HomePage() {
     </div></section>
 
     <section className="campus-story-section"><div className="campus-story-image"><ImageReveal src={imageBank.campus} alt="A welcoming school campus" /></div><div className="campus-story-content"><Reveal><span className="eyebrow eyebrow-light"><i />Room to explore</span><h2>A campus that<br /><em>opens possibilities.</em></h2><p>From spaces built for focus to places made for movement and discovery, the environment around a learner is part of the learning itself.</p><ArrowLink to="/campus" light>Explore our spaces</ArrowLink><div className="campus-story-meta"><span><MapPin size={15} />Designed around discovery</span><span>Spaces for every kind of learner</span></div></Reveal></div></section>
+
+    <ToppersPosterBanner />
 
     <section className="people-section section-pad"><div className="section-row"><SectionHeading eyebrow="The people behind the progress" title={<>Big-hearted educators.<br /><em>Bright futures.</em></>} description="The best learning happens when students are known, encouraged, challenged, and supported." /><ArrowLink to="/faculty">Meet our people</ArrowLink></div><div className="faculty-grid home-faculty-grid">{featuredFaculty.map((person, i) => <Reveal key={person.id} delay={i * .08} className="faculty-card"><Link to="/faculty" className="faculty-photo"><img src={person.image} alt={person.name} loading="lazy" /><span className="faculty-card-arrow"><ArrowUpRight size={18} /></span></Link><div className="faculty-info"><span className="faculty-subject">{person.subject}</span><h3>{person.name}</h3><p>{person.role}</p></div></Reveal>)}</div></section>
 
@@ -285,4 +367,314 @@ export function AdmissionsPage() {
 export function ContactPage() {
   const { data } = useSiteData();
   return <><PageHero eyebrow="Get in touch" title={<>Let's start with<br /><em>a conversation.</em></>} description="Questions about learning, campus life, admissions, or something else? We'd be glad to help you find the right person to talk to." image={imageBank.campus} /><section className="contact-layout section-pad"><div className="contact-main"><SectionHeading eyebrow="We're listening" title={<>A good conversation<br /><em>can open a door.</em></>} description="Reach out to the school team or start an admissions enquiry. We will help point you in the right direction." /><div className="contact-options"><a href={`mailto:${data.settings.email}`}><span><Mail size={20} /></span><div><small>EMAIL US</small><strong>{data.settings.email}</strong><p>For questions and general enquiries</p></div><ArrowUpRight size={17} /></a><a href={`tel:${data.settings.phone.replace(/\s/g, '')}`}><span><Phone size={20} /></span><div><small>CALL US</small><strong>{data.settings.phone}</strong><p>Speak with the school team</p></div><ArrowUpRight size={17} /></a><div><span><MapPin size={20} /></span><div><small>FIND US</small><strong>{data.settings.address}</strong><p>Campus location details</p></div></div></div><Link className="button button-navy" to="/admissions">Make an admissions enquiry <ArrowUpRight size={17} /></Link></div><div className="contact-map"><div className="map-grid" /><div className="map-pin"><MapPin size={25} /></div><div className="map-card"><span className="map-card-icon"><Brand compact /></span><strong>Majin Schools</strong><p>{data.settings.address}</p><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.settings.address)}`} target="_blank" rel="noreferrer">Open directions <ArrowUpRight size={15} /></a></div><span className="map-coordinates">17°23' N · 78°29' E <i /> CONCEPT MAP VIEW</span></div></section><GrandCTA /></>;
+}
+
+export function ToppersPage() {
+  const { data } = useSiteData();
+  const [selectedYear, setSelectedYear] = useState<string>('All');
+  const [selectedStream, setSelectedStream] = useState<string>('All');
+  const [selectedSection, setSelectedSection] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  const allToppers = data.meritStudents || [];
+  const boardStats = data.boardResults || [];
+
+  const years = useMemo(() => {
+    const list = Array.from(new Set(allToppers.map((s) => s.year))).sort((a, b) => b.localeCompare(a));
+    return ['All', ...list];
+  }, [allToppers]);
+
+  const streams = useMemo(() => {
+    const list = Array.from(new Set(allToppers.map((s) => s.examOrCategory)));
+    return ['All', ...list];
+  }, [allToppers]);
+
+  const sections = useMemo(() => {
+    const list = Array.from(new Set(allToppers.map((s) => s.sectionOrStream)));
+    return ['All', ...list];
+  }, [allToppers]);
+
+  const filteredStudents = useMemo(() => {
+    return allToppers.filter((s) => {
+      const matchYear = selectedYear === 'All' || s.year === selectedYear;
+      const matchStream = selectedStream === 'All' || s.examOrCategory === selectedStream;
+      const matchSection = selectedSection === 'All' || s.sectionOrStream === selectedSection;
+      const query = searchQuery.trim().toLowerCase();
+      const matchQuery =
+        !query ||
+        s.name.toLowerCase().includes(query) ||
+        s.rankOrScore.toLowerCase().includes(query) ||
+        s.examOrCategory.toLowerCase().includes(query) ||
+        s.sectionOrStream.toLowerCase().includes(query) ||
+        (s.highlights && s.highlights.toLowerCase().includes(query));
+      return matchYear && matchStream && matchSection && matchQuery;
+    });
+  }, [allToppers, selectedYear, selectedStream, selectedSection, searchQuery]);
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Academic Hall of Fame"
+        title={<>Where Curiosity<br /><em>Becomes Distinction.</em></>}
+        description="Explore our year-on-year 100% board pass percentage, All-India rank holders, subject centum achievers, and stream-wise merit lists."
+        image={imageBank.topper1}
+        label="TOP STUDENTS & MERIT LIST"
+      />
+
+      <section className="section-pad board-results-section">
+        <div className="section-row">
+          <SectionHeading
+            eyebrow="Board Examination Performance"
+            title={<>Consistent 100% Pass Percentage.<br /><em>A Culture of Mastery.</em></>}
+            description="Our academic framework combines conceptual depth, rigorous assessment, and individual doubt-solving to deliver peerless board examination outcomes."
+          />
+          <div className="board-results-summary-badge">
+            <Trophy size={18} />
+            <span>12 CONSECUTIVE YEARS 100% BOARD PASS</span>
+          </div>
+        </div>
+
+        <div className="board-results-cards-grid">
+          {boardStats.map((stat) => (
+            <div key={stat.id} className="board-result-card">
+              <div className="board-card-header">
+                <span className="board-year">BATCH {stat.year}</span>
+                <span className="board-exam">{stat.exam}</span>
+              </div>
+              <div className="board-stats-row">
+                <div className="board-stat-metric">
+                  <strong>{stat.passPercentage}</strong>
+                  <span>Pass Rate</span>
+                </div>
+                <div className="board-stat-metric">
+                  <strong>{stat.distinctionPercentage}</strong>
+                  <span>Distinction (85%+)</span>
+                </div>
+                <div className="board-stat-metric">
+                  <strong>{stat.schoolAverage}</strong>
+                  <span>Batch Average</span>
+                </div>
+                <div className="board-stat-metric highlight-metric">
+                  <strong>{stat.centumCount}</strong>
+                  <span>100/100 Scores</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="board-table-card">
+          <div className="board-table-title">
+            <h4>Year-on-Year Board Examination Metrics</h4>
+            <span>Official CBSE verified school outcomes</span>
+          </div>
+          <div className="board-table-scroll">
+            <table className="board-comparison-table">
+              <thead>
+                <tr>
+                  <th>Academic Year</th>
+                  <th>Board Exam</th>
+                  <th>Pass Rate</th>
+                  <th>Distinction Rate (85%+)</th>
+                  <th>Cohort Average</th>
+                  <th>Subject Centums (100/100)</th>
+                  <th>National Ranks</th>
+                </tr>
+              </thead>
+              <tbody>
+                {boardStats.map((stat) => (
+                  <tr key={`row-${stat.id}`}>
+                    <td><strong>{stat.year}</strong></td>
+                    <td>{stat.exam}</td>
+                    <td><span className="table-badge-green">{stat.passPercentage}</span></td>
+                    <td>{stat.distinctionPercentage}</td>
+                    <td>{stat.schoolAverage}</td>
+                    <td><strong>{stat.centumCount}</strong></td>
+                    <td><span className="table-badge-gold">AIR 4, State 1st</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad toppers-directory-section" id="merit-list">
+        <div className="section-row">
+          <SectionHeading
+            eyebrow="Merit Roll & Toppers"
+            title={<>Top Students Across<br /><em>Years & Streams.</em></>}
+            description="Filter by graduation year, academic stream, or class section to inspect our high achievers."
+          />
+          <div className="toppers-counter-badge">
+            <strong>{filteredStudents.length}</strong>
+            <span>STUDENTS DISPLAYED</span>
+          </div>
+        </div>
+
+        <div className="toppers-filter-panel">
+          <div className="toppers-filter-row">
+            <div className="toppers-search-wrap">
+              <Search size={16} />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search by student name, rank, or subject..."
+                aria-label="Search top students"
+              />
+              {searchQuery && (
+                <button className="clear-search" onClick={() => setSearchQuery('')} aria-label="Clear search">
+                  <X size={14} />
+                </button>
+              )}
+            </div>
+
+            <div className="filter-group">
+              <label><Calendar size={13} /> Year:</label>
+              <div className="filter-pills-row">
+                {years.map((y) => (
+                  <button
+                    key={y}
+                    className={selectedYear === y ? 'selected' : ''}
+                    onClick={() => setSelectedYear(y)}
+                  >
+                    {y === 'All' ? 'All Years' : `Batch ${y}`}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="toppers-filter-row second-filter-row">
+            <div className="filter-group">
+              <label>Stream / Exam:</label>
+              <select
+                value={selectedStream}
+                onChange={(e) => setSelectedStream(e.target.value)}
+                className="filter-select"
+                aria-label="Filter by stream or exam"
+              >
+                <option value="All">All Streams & Exams</option>
+                {streams.filter((s) => s !== 'All').map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="filter-group">
+              <label>Section:</label>
+              <select
+                value={selectedSection}
+                onChange={(e) => setSelectedSection(e.target.value)}
+                className="filter-select"
+                aria-label="Filter by section"
+              >
+                <option value="All">All Sections</option>
+                {sections.filter((sec) => sec !== 'All').map((sec) => (
+                  <option key={sec} value={sec}>{sec}</option>
+                ))}
+              </select>
+            </div>
+
+            {(selectedYear !== 'All' || selectedStream !== 'All' || selectedSection !== 'All' || searchQuery) && (
+              <button
+                className="filter-reset-button"
+                onClick={() => {
+                  setSelectedYear('All');
+                  setSelectedStream('All');
+                  setSelectedSection('All');
+                  setSearchQuery('');
+                }}
+              >
+                Reset filters
+              </button>
+            )}
+          </div>
+        </div>
+
+        {filteredStudents.length > 0 ? (
+          <div className="toppers-merit-grid">
+            {filteredStudents.map((student) => (
+              <div key={student.id} className="topper-merit-card">
+                <div className="topper-merit-photo-wrap">
+                  <img src={student.image} alt={student.name} loading="lazy" />
+                  <span className="topper-merit-badge">{student.badge || 'MERIT SCHOLAR'}</span>
+                  <div className="topper-merit-score-pill">
+                    <Award size={13} />
+                    <span>{student.rankOrScore}</span>
+                  </div>
+                </div>
+                <div className="topper-merit-card-content">
+                  <div className="topper-meta-tags">
+                    <span className="tag-year">Batch {student.year}</span>
+                    <span className="tag-section">{student.sectionOrStream}</span>
+                  </div>
+                  <h3 className="topper-card-name">{student.name}</h3>
+                  <p className="topper-exam-name">{student.examOrCategory}</p>
+                  <div className="topper-highlights-box">
+                    <span className="highlights-label">ACADEMIC DISTINCTION</span>
+                    <p>{student.highlights}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state toppers-empty-state">
+            <Search size={32} />
+            <h3>No matching toppers found</h3>
+            <p>Try adjusting your year, stream, or section filters to view more merit students.</p>
+            <button
+              className="button button-navy"
+              onClick={() => {
+                setSelectedYear('All');
+                setSelectedStream('All');
+                setSelectedSection('All');
+                setSearchQuery('');
+              }}
+            >
+              Reset all filters
+            </button>
+          </div>
+        )}
+
+        <p className="content-disclaimer">
+          Student names, photographs, scores, and competitive ranks shown on this demo site are illustrative placeholders. Official verified school records are maintained in the administrative archives.
+        </p>
+      </section>
+
+      <section className="section-pad toppers-method-section">
+        <SectionHeading
+          eyebrow="The Method Behind the Merit"
+          title={<>How We Achieve<br /><em>Uncompromising Results.</em></>}
+          description="High scores are not accidental—they are the natural outcome of a disciplined, supportive, and inquiry-led learning culture."
+        />
+        <div className="toppers-pillars-grid">
+          <div className="toppers-pillar-card">
+            <span className="pillar-num">01</span>
+            <h3>Daily Doubts & Concept Mastery</h3>
+            <p>Dedicated daily zero-period clinics where learners resolve queries before misconceptions compound.</p>
+          </div>
+          <div className="toppers-pillar-card">
+            <span className="pillar-num">02</span>
+            <h3>Board Simulation & Error Diagnostics</h3>
+            <p>Full-length board condition mock examinations with in-depth question-by-question diagnostic reports.</p>
+          </div>
+          <div className="toppers-pillar-card">
+            <span className="pillar-num">03</span>
+            <h3>Integrated Competitive Prep</h3>
+            <p>Foundation coaching for JEE, NEET, Olympiads, and CA integrated seamlessly into standard CBSE timetables.</p>
+          </div>
+          <div className="toppers-pillar-card">
+            <span className="pillar-num">04</span>
+            <h3>1:1 Faculty Mentorship & Well-being</h3>
+            <p>Personal academic advisors ensure students manage examination stress while sustaining peak motivation.</p>
+          </div>
+        </div>
+      </section>
+
+      <GrandCTA />
+    </>
+  );
 }
