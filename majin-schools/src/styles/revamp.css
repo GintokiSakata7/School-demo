@@ -919,31 +919,790 @@ body { color: var(--ink); background: var(--ivory); font-size: 16px; }
   .hero-bottom-strip { grid-template-columns: repeat(3, minmax(0,1fr)); }
   .hero-strip-link { grid-column: 1 / -1; justify-self: end; margin-top: 3px; }
 }
+/* ==========================================================================
+   MOBILE VIEW SPACING & LAYOUT REFINEMENTS (Max-width: 780px)
+   Strictly mobile-only. Desktop styles are left completely untouched.
+   ========================================================================== */
 @media (max-width: 780px) {
-  .hero-revamp-shell {
-    width: 100%;
-    padding: 43px 22px 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 31px;
+  /* Hide intrusive floating pill that covers content on mobile */
+  .mobile-admissions-pill {
+    display: none !important;
   }
-  .hero-revamp-copy { max-width: 650px; padding: 0 0 3px; }
-  .hero-section-revamp .hero-revamp-copy h1 { font-size: clamp(45px, 11.2vw, 64px); margin: 20px 0 18px; }
-  .hero-section-revamp .hero-description { font-size: 15px; line-height: 1.76; }
-  .hero-section-revamp .hero-actions { margin-top: 24px; gap: 15px; }
-  .hero-revamp-visual { margin: 0 -22px 0 0; padding: 0 0 12px; }
-  .hero-visual-frame { width: 100%; height: clamp(340px, 91vw, 455px); min-height: 0; }
-  .hero-visual-rule { inset: 10px 0 0 10px; }
-  .hero-photo-caption { left: 19px; right: 19px; bottom: 65px; }
-  .hero-photo-caption strong { font-size: clamp(26px, 7vw, 34px); }
-  .hero-image-index { left: 19px; right: 19px; bottom: 18px; }
-  .hero-bottom-strip { grid-template-columns: 1fr; gap: 14px; padding: 24px 22px 28px; }
-  .hero-bottom-strip > div { gap: 13px; }
-  .hero-bottom-strip small { max-width: none; }
-  .hero-strip-link { grid-column: auto; justify-self: start; margin-top: 4px; }
+
+  /* Universal section breathing room & container padding */
+  .section-pad {
+    padding: clamp(48px, 11vw, 64px) clamp(16px, 5vw, 24px) !important;
+  }
+  .section-heading {
+    margin-bottom: 24px !important;
+  }
+  .section-heading .eyebrow {
+    margin-bottom: 12px;
+  }
+  .section-heading h2 {
+    font-size: clamp(32px, 8.5vw, 44px) !important;
+    line-height: 1.08 !important;
+    margin-bottom: 14px !important;
+  }
+  .section-heading p {
+    font-size: 14.5px !important;
+    line-height: 1.75 !important;
+    color: #55626d !important;
+  }
+  .section-row, .achievement-head {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+  }
+  .section-row > .arrow-link, .achievement-head > .arrow-link {
+    margin-top: 0 !important;
+    align-self: flex-start !important;
+  }
+
+  /* Header & Navigation */
+  .topline {
+    height: 30px !important;
+    padding-inline: clamp(16px, 5vw, 24px) !important;
+    font-size: 8.5px !important;
+    letter-spacing: .06em !important;
+  }
+  .site-header, .site-header.is-scrolled {
+    height: 70px !important;
+    padding-inline: clamp(16px, 5vw, 24px) !important;
+  }
+  .brand {
+    gap: 10px !important;
+  }
+  .brand-mark {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .header-cta {
+    min-height: 40px !important;
+    padding-inline: 14px !important;
+    font-size: 11px !important;
+    border-radius: 4px !important;
+  }
+  .menu-toggle {
+    width: 42px !important;
+    height: 42px !important;
+  }
+  .mobile-menu-inner {
+    padding: 24px clamp(16px, 5vw, 24px) 36px !important;
+  }
+  .mobile-menu-inner > a:not(.mobile-menu-cta) {
+    padding: 16px 0 !important;
+    font-size: 22px !important;
+  }
+  .mobile-menu-cta {
+    margin-top: 24px !important;
+    padding: 15px 18px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Homepage Hero */
+  .hero-revamp-shell {
+    width: 100% !important;
+    padding: clamp(28px, 7vw, 42px) clamp(16px, 5vw, 24px) 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 24px !important;
+  }
+  .hero-revamp-copy {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .hero-revamp-eyebrow {
+    font-size: 9px !important;
+    letter-spacing: .12em !important;
+    margin-bottom: 12px !important;
+  }
+  .hero-section-revamp .hero-revamp-copy h1 {
+    max-width: 100% !important;
+    font-size: clamp(34px, 8.8vw, 48px) !important;
+    line-height: 1.05 !important;
+    margin: 14px 0 16px !important;
+  }
+  .hero-section-revamp .hero-description {
+    max-width: 100% !important;
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+  .hero-section-revamp .hero-actions {
+    margin-top: 22px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .hero-section-revamp .hero-primary-button {
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+  }
+  .hero-section-revamp .hero-text-link {
+    width: 100% !important;
+    text-align: center !important;
+    padding-block: 8px !important;
+    font-size: 12px !important;
+  }
+  .hero-trust-points {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px 18px !important;
+    margin-top: 22px !important;
+    padding-top: 18px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+  .hero-trust-points span {
+    font-size: 10.5px !important;
+  }
+  .hero-revamp-visual {
+    margin: 12px 0 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .hero-visual-frame {
+    width: 100% !important;
+    height: clamp(260px, 72vw, 380px) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    border-radius: 4px !important;
+  }
+  .hero-visual-rule {
+    display: none !important;
+  }
+  .hero-photo-caption {
+    left: 16px !important;
+    right: 16px !important;
+    bottom: 48px !important;
+  }
+  .hero-photo-caption strong {
+    font-size: clamp(22px, 6vw, 30px) !important;
+    line-height: 1.15 !important;
+  }
+  .hero-image-index {
+    left: 16px !important;
+    right: 16px !important;
+    bottom: 16px !important;
+    font-size: 8.5px !important;
+  }
+  .hero-bottom-strip {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding: 8px clamp(16px, 5vw, 24px) 20px !important;
+    margin-top: 24px !important;
+  }
+  .hero-bottom-strip > div {
+    padding: 16px 0 !important;
+    gap: 14px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+  .hero-bottom-strip > div:last-of-type {
+    border-bottom: none !important;
+  }
+  .hero-strip-link {
+    grid-column: auto !important;
+    justify-self: stretch !important;
+    margin-top: 12px !important;
+    padding: 14px 0 6px !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Intro Section (Home) */
+  .intro-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+  .intro-photo-wrap {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .intro-photo, .intro-photo-wrap .image-reveal {
+    height: clamp(260px, 70vw, 380px) !important;
+    max-height: none !important;
+    border-radius: 4px !important;
+  }
+  .photo-note {
+    position: static !important;
+    margin-top: 14px !important;
+    width: 100% !important;
+    padding: 14px 16px !important;
+    border-radius: 4px !important;
+  }
+  .intro-copy {
+    padding-top: 8px !important;
+  }
+  .intro-copy h2 {
+    font-size: clamp(32px, 8.5vw, 42px) !important;
+    margin: 12px 0 16px !important;
+  }
+  .intro-copy .lead-copy {
+    font-size: 15.5px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 14px !important;
+  }
+  .intro-copy p {
+    font-size: 14px !important;
+    line-height: 1.75 !important;
+  }
+
+  /* Subpage Hero (Editorial) */
+  .page-hero-editorial {
+    padding: clamp(28px, 7vw, 40px) clamp(16px, 5vw, 24px) clamp(32px, 8vw, 44px) !important;
+  }
+  .page-hero-editorial .page-hero-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px !important;
+  }
+  .page-hero-copy {
+    padding-top: 0 !important;
+  }
+  .hero-breadcrumbs {
+    margin-bottom: 14px !important;
+  }
+  .page-hero-editorial h1 {
+    font-size: clamp(34px, 8.8vw, 46px) !important;
+    line-height: 1.05 !important;
+    margin: 14px 0 16px !important;
+  }
+  .page-hero-editorial p {
+    font-size: 14.5px !important;
+    line-height: 1.75 !important;
+  }
+  .page-hero-editorial .page-hero-meta {
+    margin-top: 18px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid var(--line) !important;
+    gap: 16px !important;
+    font-size: 8.5px !important;
+  }
+  .page-hero-media {
+    width: 100% !important;
+    height: clamp(220px, 56vw, 320px) !important;
+    border-radius: 4px !important;
+  }
+
+  /* Belief Band & StatBand */
+  .belief-band {
+    padding: 24px clamp(16px, 5vw, 24px) !important;
+  }
+  .belief-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .belief-item, .belief-item:first-child {
+    padding: 16px 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    gap: 14px !important;
+    align-items: flex-start !important;
+  }
+  .belief-item:last-child {
+    border-bottom: 0 !important;
+    padding-bottom: 4px !important;
+  }
+  .belief-number {
+    font-size: 22px !important;
+    min-width: 32px !important;
+  }
+  .belief-item h3 {
+    font-size: 14px !important;
+    margin-bottom: 3px !important;
+  }
+  .belief-item p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* What We Believe (About Page) */
+  .story-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+  .story-side {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin-bottom: 0 !important;
+  }
+  .story-side-card {
+    max-width: 100% !important;
+    border-radius: 6px !important;
+  }
+  .story-side-photo {
+    height: 190px !important;
+  }
+  .story-side-content {
+    padding: 18px 18px 20px !important;
+    gap: 12px !important;
+  }
+  .story-side-quote {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+  }
+  .story-side-stats {
+    padding-top: 14px !important;
+    gap: 14px !important;
+  }
+  .story-main {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .story-columns {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    margin-top: 18px !important;
+  }
+  .story-columns p {
+    font-size: 14px !important;
+    line-height: 1.75 !important;
+  }
+  .values-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px 14px !important;
+    margin-top: 28px !important;
+    padding-top: 22px !important;
+    border-top: 1px solid var(--line) !important;
+  }
+  .values-row span {
+    padding: 0 !important;
+    font-size: 18px !important;
+  }
+  .values-row small {
+    margin-bottom: 4px !important;
+    font-size: 9px !important;
+  }
+
+  /* Mission Cards */
+  .mission-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    margin-top: 24px !important;
+  }
+  .mission-card {
+    padding: 22px 20px !important;
+    min-height: 0 !important;
+    border-radius: 4px !important;
+  }
+  .mission-card h3 {
+    font-size: 24px !important;
+    margin: 18px 0 8px !important;
+  }
+  .mission-card p {
+    font-size: 13.5px !important;
+    line-height: 1.75 !important;
+  }
+
+  /* Academics Page */
+  .academics-intro {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .academics-intro h2 {
+    font-size: clamp(32px, 8.5vw, 42px) !important;
+  }
+  .programme-section {
+    padding-block: clamp(48px, 10vw, 64px) !important;
+  }
+  .programme-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 24px 0 28px !important;
+    min-height: 0 !important;
+  }
+  .programme-image {
+    height: clamp(210px, 56vw, 300px) !important;
+    border-radius: 4px !important;
+  }
+  .programme-copy {
+    padding: 0 !important;
+  }
+  .programme-copy h3 {
+    font-size: clamp(24px, 6.5vw, 32px) !important;
+    margin: 8px 0 10px !important;
+  }
+  .programme-copy p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+  .programme-tags {
+    margin-top: 16px !important;
+    gap: 8px !important;
+  }
+  .teaching-section {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .teaching-copy {
+    padding: clamp(40px, 10vw, 56px) clamp(16px, 5vw, 24px) !important;
+  }
+  .teaching-points {
+    margin-top: 28px !important;
+    gap: 20px !important;
+  }
+  .teaching-image, .teaching-image .image-reveal {
+    height: clamp(240px, 60vw, 360px) !important;
+  }
+
+  /* Campus Page & Filter Bar */
+  .campus-intro {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .campus-intro-aside {
+    padding: 18px 16px !important;
+    gap: 14px !important;
+    border-radius: 4px !important;
+  }
+  .campus-filter-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-bottom: 22px !important;
+  }
+  .campus-filter-label {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: .12em !important;
+  }
+  .filter-pills {
+    display: flex !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 4px 2px 10px !important;
+    margin-inline: -2px !important;
+  }
+  .filter-pills button {
+    flex: 0 0 auto !important;
+    padding: 9px 15px !important;
+    font-size: 11px !important;
+    border-radius: 20px !important;
+  }
+  .campus-gallery-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .campus-gallery-item button {
+    height: clamp(150px, 42vw, 200px) !important;
+    border-radius: 4px !important;
+  }
+  .gallery-item-copy {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+  }
+  .gallery-item-copy strong {
+    font-size: 13.5px !important;
+    line-height: 1.25 !important;
+  }
+  .gallery-item-copy small {
+    font-size: 8px !important;
+  }
+  .gallery-item-open {
+    top: 10px !important;
+    right: 10px !important;
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* Faculty Directory */
+  .faculty-page-intro {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .faculty-page-note {
+    padding: 18px 16px !important;
+    gap: 14px !important;
+    border-radius: 4px !important;
+  }
+  .directory-top {
+    margin-bottom: 22px !important;
+    padding-bottom: 14px !important;
+    font-size: 9px !important;
+  }
+  .faculty-grid, .faculty-grid-large {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 22px 12px !important;
+  }
+  .faculty-photo {
+    height: clamp(180px, 48vw, 240px) !important;
+    border-radius: 4px !important;
+  }
+  .faculty-info {
+    padding-top: 12px !important;
+  }
+  .faculty-info h3 {
+    font-size: 18px !important;
+    margin: 4px 0 2px !important;
+  }
+  .faculty-info > p {
+    font-size: 11.5px !important;
+  }
+  .faculty-bio {
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+    margin-top: 6px !important;
+  }
+
+  /* Achievements Directory */
+  .achievement-intro-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    margin-bottom: 24px !important;
+  }
+  .achievement-directory {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+  .achievement-feature {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    padding: 22px 0 26px !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+  .achievement-feature-image {
+    height: clamp(200px, 54vw, 280px) !important;
+    border-radius: 4px !important;
+  }
+  .achievement-feature-copy h3 {
+    font-size: clamp(24px, 6.5vw, 32px) !important;
+    margin: 8px 0 10px !important;
+  }
+  .achievement-feature-copy p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Student Life & News Pages */
+  .life-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .life-image {
+    height: clamp(200px, 54vw, 270px) !important;
+  }
+  .life-card-copy {
+    padding: 20px 18px !important;
+  }
+  .life-card-copy h3 {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+  }
+  .life-card-copy p {
+    font-size: 13.5px !important;
+  }
+  .student-voice {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .student-voice-image, .student-voice-image .image-reveal {
+    height: clamp(220px, 56vw, 320px) !important;
+  }
+  .student-voice-copy {
+    padding: clamp(36px, 9vw, 48px) clamp(16px, 5vw, 24px) !important;
+  }
+  .events-grid, .news-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+  .event-image, .news-card-image {
+    height: clamp(190px, 50vw, 260px) !important;
+    border-radius: 4px !important;
+  }
+  .event-card h3, .news-card h3 {
+    font-size: 22px !important;
+    margin: 8px 0 6px !important;
+  }
+  .event-card p, .news-card p {
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Admissions & Contact Forms */
+  .admissions-layout, .contact-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+  .admissions-copy h2, .contact-main h2 {
+    font-size: clamp(32px, 8.5vw, 42px) !important;
+    line-height: 1.08 !important;
+  }
+  .admission-steps {
+    margin-top: 24px !important;
+    gap: 0 !important;
+  }
+  .admission-steps > div {
+    padding: 16px 0 !important;
+    gap: 14px !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+  .admission-steps > div:last-child {
+    border-bottom: none !important;
+  }
+  .admissions-direct {
+    margin-top: 24px !important;
+    padding: 18px 16px !important;
+    border-radius: 4px !important;
+  }
+  .admissions-form-card {
+    padding: 24px 18px !important;
+    border-radius: 6px !important;
+  }
+  .admissions-form-card h3 {
+    font-size: 26px !important;
+    margin: 12px 0 8px !important;
+  }
+  .admissions-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin-top: 20px !important;
+  }
+  .form-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    min-height: 48px !important;
+    font-size: 14px !important;
+    padding-inline: 14px !important;
+    border-radius: 4px !important;
+  }
+  .contact-options {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    margin-top: 24px !important;
+  }
+  .contact-options > a, .contact-options > div {
+    padding: 18px 16px !important;
+    gap: 14px !important;
+    border-radius: 4px !important;
+  }
+  .contact-map {
+    height: 280px !important;
+    min-height: 0 !important;
+    border-radius: 6px !important;
+    margin-top: 10px !important;
+  }
+
+  /* Grand CTA & Footer */
+  .grand-cta {
+    padding: 0 !important;
+  }
+  .grand-cta-inner {
+    padding: clamp(48px, 12vw, 68px) clamp(16px, 5vw, 24px) !important;
+  }
+  .grand-cta h2 {
+    font-size: clamp(34px, 8.8vw, 46px) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 14px !important;
+  }
+  .grand-cta p {
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 24px !important;
+  }
+  .cta-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .grand-cta .button {
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+  }
+  .grand-cta-bottom {
+    padding: 16px clamp(16px, 5vw, 24px) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    font-size: 8.5px !important;
+  }
+  .footer-main {
+    grid-template-columns: 1fr 1fr !important;
+    padding: 44px clamp(16px, 5vw, 24px) 32px !important;
+    gap: 28px 18px !important;
+  }
+  .footer-brand-block {
+    grid-column: 1 / -1 !important;
+    margin-bottom: 8px !important;
+  }
+  .footer-brand-block > p {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+  }
+  .footer-bottom {
+    margin-inline: clamp(16px, 5vw, 24px) !important;
+    padding: 18px 0 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    font-size: 9.5px !important;
+  }
 }
+
+@media (max-width: 480px) {
+  .hero-trust-points {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .faculty-grid, .faculty-grid-large {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+  .faculty-photo {
+    height: clamp(220px, 62vw, 280px) !important;
+  }
+  .campus-gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .campus-gallery-item button {
+    height: clamp(180px, 52vw, 240px) !important;
+  }
+  .values-row {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
 @media (max-width: 380px) {
-  .hero-revamp-shell { padding-inline: 18px; }
-  .hero-revamp-visual { margin-right: -18px; }
-  .hero-section-revamp .hero-actions { align-items: flex-start; }
+  .hero-revamp-shell {
+    padding-inline: 16px !important;
+  }
+  .brand-copy strong {
+    font-size: 11px !important;
+  }
+  .brand-copy small {
+    display: none !important;
+  }
 }
